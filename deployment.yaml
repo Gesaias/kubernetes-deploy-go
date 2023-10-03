@@ -36,7 +36,8 @@ spec:
     app: goapi
   type: ClusterIP
   ports:
-    - protocol: TCP
+    - name: ingress
+      protocol: TCP
       port: 80
       targetPort: 80
 
@@ -51,10 +52,13 @@ metadata:
     allow.http: "false"
 spec:
   rules:
-  - host: go.rancher.dev-ops-ninja.com
+  - host: go.rancher.jaru.ro.gov.br
     http:
       paths:
         - path: /
+          pathType: Exact
           backend:
-            serviceName: go-service
-            servicePort: 80
+            service:
+              name: go-service
+              port:
+                name: ingress
