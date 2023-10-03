@@ -22,7 +22,7 @@ spec:
       containers:
       - name: goapi
         # image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
-        image: go-server:${CICD_EXECUTION_SEQUENCE}
+        image: go-server:latest
         ports:
         - containerPort: 80
 
